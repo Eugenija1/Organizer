@@ -16,7 +16,10 @@ public:
     int currentYear();
     int currentMonth();
     int currentDay();
-    int dayNumber(int day, int month, int year);
+
+    int dayNumber( int month, int year);
+
+
     std::string getMonthName(int monthNumber);
     int numberOfDays (int monthNumber, int year);
     int CheckDate(int d, int m, int y);

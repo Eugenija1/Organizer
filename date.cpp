@@ -25,7 +25,7 @@ int Date::currentDay() {
     return timePtr->tm_mday;
 }
 
-int Date::dayNumber(int day, int month, int year){
+int Date::dayNumber( int month, int year){
 
     static int t[] = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
     year -= month < 3;

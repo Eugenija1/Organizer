@@ -15,7 +15,7 @@ class Calendar {
     Date date;
     vector <std::string> events;
 public:
-    Calendar(){std::cout<<"constructor calendar\n";};
+    Calendar(){};
     void printYear(int year);
     void PrintMonth(int month, int year);
     void options();

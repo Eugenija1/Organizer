@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -21,9 +22,10 @@ void Calendar::printYear(int year)
 
 
     // Index of the day from 0 to 6
-    int current = date.dayNumber (1, 1, year);
+    int current = date.dayNumber ( 1, year);
 
     // i --> Iterate through all the months
+
     // j --> Iterate through all the days of the
     //       month - i
     for (int i = 0; i < 12; i++) {
@@ -72,7 +74,7 @@ void Calendar::PrintMonth(int month, int year){
            date.getMonthName(month).c_str());
     printf("  Mon  Tue  Wed  Thu  Fri  Sat  Sun\n");
 
-    int current = date.dayNumber(1, month+1, year);
+    int current = date.dayNumber( month+1, year);
     int k;
 
     for ( k = 0; k < current; k++)
@@ -140,13 +142,13 @@ void Calendar::CreateEvent() {
     string data;
     data=event.CreateRecord();
     events.push_back(data);
-    for (auto & i: events)
-        cout<<i<<endl;
+//    for (auto & i: events)
+//        cout<<i<<endl;
 };
 
 void Calendar::SaveEvent(){
     ofstream file;
-    file.open("C:\\Users\\Berezka\\CLionProjects\\calendar\\event.txt", ios::app);
+    file.open("/Users/marinalukacik/Desktop/org/event", ios::app);
     if (file.is_open())
         for (auto & i: events) {
             file<<i<< endl;
@@ -227,7 +229,7 @@ void Calendar::ShowRecentEvents(){
 void Calendar::ShowSavedEvents() {
     ifstream file;
     string line;
-    file.open("C:\\Users\\Berezka\\CLionProjects\\calendar\\event.txt");
+    file.open("/Users/marinalukacik/Desktop/org/event");
     if (file.is_open())
     {
         while ( getline (file,line) )
@@ -265,7 +267,7 @@ void Calendar::SearchBySpecificDate() {
     date.GetDateFromUser();
     ifstream file;
     string line;
-    file.open("C:\\Users\\Berezka\\CLionProjects\\calendar\\event.txt");
+    file.open("/Users/marinalukacik/Desktop/org/eventt");
     string data;
     data = date.GetDate();
     if (file.is_open()) {
@@ -287,7 +289,7 @@ void Calendar::SearchByMonth() {
     date.SetMonth(m);
     ifstream file;
     string line;
-    file.open("C:\\Users\\Berezka\\CLionProjects\\calendar\\event.txt");
+    file.open("/Users/marinalukacik/Desktop/org/eventt");
     string data;
     data = date.GetMonth();
     if (file.is_open()) {
@@ -309,7 +311,7 @@ void Calendar::SearchByYear() {
     date.SetYear(y);
     ifstream file;
     string line;
-    file.open("C:\\Users\\Berezka\\CLionProjects\\calendar\\event.txt");
+    file.open("/Users/marinalukacik/Desktop/org/event");
     string data;
     data = to_string(y);
     if (file.is_open()) {
@@ -327,13 +329,11 @@ void Calendar::SearchByYear() {
 void Calendar::UpcomingEvents(){
     ifstream file;
     string line;
-    file.open("C:\\Users\\Berezka\\CLionProjects\\calendar\\event.txt");
+    file.open("/Users/marinalukacik/Desktop/org/event");
     string data, days, dayline="";
     date.SetMonth(date.currentMonth()+1);
     data=date.GetMonth();
-    cout<<"current month "<<data<<endl;
     days=to_string(date.currentDay());
-    cout<<"current day "<<days<<endl;
     cout<<"Upcoming events\n";
     if (file.is_open()) {
         while (getline(file, line)) {
@@ -347,7 +347,8 @@ void Calendar::UpcomingEvents(){
                 dayline+=line[1];
                 if(stoi(dayline)>=stoi(days))
                     cout<<line<<endl;
-            }
+            }else
+                cout<<"There're no upcoming events\n";
 
         }
         file.close();
