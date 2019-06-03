@@ -8,7 +8,7 @@ SPECYFIKACJA FUNKCJONALNA
 
 Główne elementy
 
-Aplikacja, zwana dalej organizerem, zawiera podstawowe elementy każdego kalendarza takie ja podział na: 
+Aplikacja, zwana dalej organizerem, zawiera podstawowe elementy każdego kalendarza takie jak podział na: 
 -godziny, 
 -dni, 
 -tygodnie, 
